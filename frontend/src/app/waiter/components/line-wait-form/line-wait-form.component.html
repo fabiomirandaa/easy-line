@@ -1,0 +1,15 @@
+<form [formGroup]="formWaiter" (ngSubmit)="onSubmit()">
+  <div class="field is-grouped">
+    <p class="control is-expanded">
+      <input class="input" type="text" formControlName="name" placeholder="Nome">
+    </p>
+    <p class="control is-expanded">
+      <input class="input" type="text" formControlName="countPersons" placeholder="Quantidade de pessoas">
+    </p>
+    <p class="control">
+      <button class="button is-info" type="submit">
+        Adicionar
+      </button>
+    </p>
+  </div>
+</form>

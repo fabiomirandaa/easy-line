@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LineWaitFormPage } from './line-wait-form.page';
+import { LineWaitListComponent } from './line-wait-list.component';
 
-describe('LineWaitFormPage', () => {
-  let component: LineWaitFormPage;
-  let fixture: ComponentFixture<LineWaitFormPage>;
+describe('LineWaitListComponent', () => {
+  let component: LineWaitListComponent;
+  let fixture: ComponentFixture<LineWaitListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LineWaitFormPage],
+      imports: [LineWaitListComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LineWaitFormPage);
+    fixture = TestBed.createComponent(LineWaitListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

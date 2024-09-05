@@ -16,11 +16,11 @@ export class WaitLineService {
 
   addItem() {
     return this.#http
-      .get<any[]>(this.#apiURI)
+      .post<any[]>(this.#apiURI, {})
   }
 
   removeItem() {
     return this.#http
-      .get<any[]>(this.#apiURI)
+      .delete<any[]>(this.#apiURI)
   }
 }
