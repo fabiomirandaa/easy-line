@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Waiter } from '@easy-line-app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class WaitLineService {
 
   getLine() {
     return this.#http
-      .get<any[]>(this.#apiURI)
+      .get<Waiter[]>(this.#apiURI)
   }
 
   addItem() {
