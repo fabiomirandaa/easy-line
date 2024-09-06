@@ -2,7 +2,9 @@
   "name": "@easy-line-app/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "npx nx run-many --target=serve --projects=frontend,api"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.2.0",
