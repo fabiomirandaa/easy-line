@@ -16,16 +16,19 @@
         "polyfills": ["zone.js"],
         "tsConfig": "frontend/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [{
-          "glob": "**/*",
-          "input": "frontend/public"
-        }],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "frontend/public"
+          }
+        ],
         "styles": ["frontend/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
         "production": {
-          "budgets": [{
+          "budgets": [
+            {
               "type": "initial",
               "maximumWarning": "500kb",
               "maximumError": "1mb"
@@ -59,7 +62,10 @@
           "buildTarget": "frontend:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "frontend/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
