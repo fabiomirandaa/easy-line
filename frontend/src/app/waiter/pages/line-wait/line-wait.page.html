@@ -2,5 +2,15 @@
   <div class="container">
     <h2 class="title">Novo Cliente</h2>
     <app-line-wait-form></app-line-wait-form>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="title">Pessoas na Fila</h2>
+        <hr>
+        <app-line-wait-list
+        [waiters]="waiters"
+        ></app-line-wait-list>
+      </div>
+    </section>
   </div>
 </section>

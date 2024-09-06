@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, input, output } from '@angular/core';
+import { Waiter } from '@easy-line-app/shared';
 
 @Component({
   selector: 'app-line-wait-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './line-wait-list.component.html',
   styleUrl: './line-wait-list.component.scss',
 })
-export class LineWaitListComponent {}
+export class LineWaitListComponent {
+  waiters = input.required<Waiter[]>();
+  waiterDelete = output<number>();
+
+  deleteWaiter(id: number) {
+    this.waiterDelete.emit(id);
+  }
+}

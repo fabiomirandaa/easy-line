@@ -1,5 +1,6 @@
 export interface Waiter {
   id: number;
   name: string;
-  creationDate: string;
+  countPersons: number;
+  creationDate: Date;
 }

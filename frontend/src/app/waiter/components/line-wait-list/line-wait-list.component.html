@@ -1,1 +1,9 @@
-<p>line-wait-list works!</p>
+<ul>
+  @for (item of waiters(); track item) {
+    <li class="box">
+      <p class="item">Nome: {{item?.name}}</p>
+      <p class="item"> Quantidade de pessoas: {{item?.countPersons}}</p>
+      <button class="button is-danger" (click)="deleteWaiter(item.id)">Remover</button>
+    </li>
+  }
+</ul>
