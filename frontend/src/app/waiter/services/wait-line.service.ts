@@ -1,26 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Waiter } from '@easy-line-app/shared';
+import { ResponseWaiter, Waiter } from '@easy-line-app/shared';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WaitLineService {
   #http = inject(HttpClient);
-  #apiURI = 'lalala';
+  #apiURI = '/api/waiters';
 
   getLine() {
     return this.#http
-      .get<Waiter[]>(this.#apiURI)
+      .get<ResponseWaiter>(this.#apiURI)
+      .pipe(map(item => item.data))
   }
 
-  addItem() {
+  addItem(item: Waiter) {
     return this.#http
-      .post<any[]>(this.#apiURI, {})
+      .post<Waiter>(this.#apiURI, item);
   }
 
-  removeItem() {
+  removeItem(id: string) {
     return this.#http
-      .delete<any[]>(this.#apiURI)
+      .delete<string>(`${this.#apiURI}/${id}`);
   }
 }

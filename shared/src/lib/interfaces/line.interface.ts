@@ -1,6 +1,11 @@
 export interface Waiter {
-  id: number;
+  id?: string;
   name: string;
-  countPersons: number;
-  creationDate: Date;
+  countPersons: string;
+}
+
+export interface ResponseWaiter {
+  data: Waiter[];
+  message: string;
+  success: boolean;
 }

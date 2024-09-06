@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Waiter } from '@easy-line-app/shared';
 
 @Component({
   selector: 'app-line-wait-form',
@@ -10,14 +11,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './line-wait-form.component.scss',
 })
 export class LineWaitFormComponent {
+  waiterChange = output<Waiter>();
+
   formWaiter = new FormGroup({
     name: new FormControl(''),
     countPersons: new FormControl(''),
-});
+  });
 
-onSubmit() {
-    console.log({ name: this.formWaiter.controls.name.value });
-    this.formWaiter.controls.name.reset();
-}
+  onSubmit() {
+    this.waiterChange.emit({ name: this.formWaiter.controls.name.value || '', countPersons: this.formWaiter.controls.countPersons.value || '0' })
+    this.formWaiter.reset();
+  }
 
 }

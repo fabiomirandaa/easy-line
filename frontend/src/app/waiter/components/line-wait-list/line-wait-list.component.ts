@@ -10,9 +10,9 @@ import { Waiter } from '@easy-line-app/shared';
 })
 export class LineWaitListComponent {
   waiters = input.required<Waiter[]>();
-  waiterDelete = output<number>();
+  waiterDelete = output<string>();
 
-  deleteWaiter(id: number) {
+  deleteWaiter(id: string) {
     this.waiterDelete.emit(id);
   }
 }

@@ -1,8 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { WaitLineService } from './../../services/wait-line.service';
+import { Component, inject } from '@angular/core';
 
 import { LineWaitFormComponent } from "../../components/line-wait-form/line-wait-form.component";
 import { LineWaitListComponent } from "../../components/line-wait-list/line-wait-list.component";
 import { Waiter } from '@easy-line-app/shared';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-line-wait',
@@ -12,11 +14,20 @@ import { Waiter } from '@easy-line-app/shared';
   styleUrl: './line-wait.page.scss',
 })
 export class LineWaitPage {
-  waiters: Waiter[] = [{
-    id: 1,
-    name: "Fábio",
-    countPersons: 3,
-    creationDate: new Date()
-  }];
+  private WaitLineService = inject(WaitLineService);
 
+  waiters: Waiter[] = [];
+
+  createteWaiter(waiter: Waiter) {
+    this.WaitLineService.addItem(waiter)
+    .pipe(switchMap(_ => {
+      return this.WaitLineService.getLine();
+    }))
+    .subscribe(item => {
+      this.waiters = item;
+    });
+  }
+  deleteWaiter(id: string) {
+    this.WaitLineService.removeItem(id);
+  }
 }
